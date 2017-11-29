@@ -4,3 +4,7 @@ chimera-client
 .DS_Store
 *.swp
 *.dSYM
+*.exe
+*.ilk
+*.pdb
+*.dll
