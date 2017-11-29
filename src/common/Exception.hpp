@@ -1,6 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <iostream>
+#include <string>
 
 namespace Chimera {
   class Exception : public std::runtime_error {

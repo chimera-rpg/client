@@ -10,8 +10,8 @@ namespace Chimera {
       Cfg();
       Cfg(std::string name);
   
-      int readFromStream(std::ifstream &in);
-      int readFromFilename(std::string name);
+      void readFromStream(std::ifstream &in);
+	  void readFromFilename(std::string name);
   
       std::string get(std::string key);
       int getInt(std::string key);

@@ -11,14 +11,14 @@ namespace Chimera {
     readFromFilename(mName);
   }
   
-  int Cfg::readFromFilename(std::string name) {
+  void Cfg::readFromFilename(std::string name) {
     std::ifstream in(name);
     if (in.is_open()) {
       readFromStream(in);
     }
   }
   
-  int Cfg::readFromStream(std::ifstream &in) {
+  void Cfg::readFromStream(std::ifstream &in) {
     std::string line;
     std::string key, value;
     std::istringstream sin;
@@ -50,7 +50,6 @@ namespace Chimera {
       value = line;
       set(key, value);
     }
-    return 0;
   }
   
   std::string Cfg::get(std::string key) {

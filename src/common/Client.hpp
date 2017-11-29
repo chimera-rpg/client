@@ -14,8 +14,8 @@ namespace Chimera {
       Cfg mCfg;
       Chimera::Module* loadModule(std::string filename);
     private:
-      Chimera::Module* interface{nullptr};
-      Chimera::Module* macros{nullptr};
-      Chimera::Module* network{nullptr};
+      Chimera::Module* mInterface{nullptr};
+      Chimera::Module* mMacros{nullptr};
+      Chimera::Module* mNetwork{nullptr};
   };
 }

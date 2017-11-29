@@ -24,18 +24,6 @@
   #endif
 #endif
 
-#if defined(_WIN32)
-#define DYN_EXT ".dll"
-#elif defined(__APPLE__)
-#define DYN_EXT ".dylib"
-#elif defined(unix) || defined(__unix__) || defined(__unix)
-#define DYN_EXT ".so"
-#endif
-
-#ifndef DYN_EXT
-#error "No dynamic library extension defined for this operating system. Check ModuleSupport.hpp and Client.cpp for adding OS support."
-#endif
-
 #include <cstdint>
 
 namespace Chimera {
