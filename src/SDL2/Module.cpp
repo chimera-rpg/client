@@ -28,7 +28,7 @@ namespace Chimera {
       SDL_Event event;
       while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
-          THROW(Exception, SDL_GetError());
+          THROW(Exception, "Quit");
         }
       }
     }
