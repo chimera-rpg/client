@@ -12,6 +12,7 @@
 
 #if PLATFORM == WINDOWS
 #define DLL_EXT ".dll"
+#define OS_SLASH "\\"
 #include <windows.h>
   std::wstring s2mb(const std::string& s) {
     int slength = (int)s.length() + 1;
@@ -49,8 +50,10 @@
   }
 #elif PLATFORM == MACOS
 #define DLL_EXT ".dylib"
+#define OS_SLASH "/"
 #elif PLATFORM == UNIX
 #define DLL_EXT ".so"
+#define OS_SLASH "/"
 #endif
 
 #ifndef DLL_EXT

@@ -18,7 +18,7 @@ namespace Chimera {
   }
   void Client::initialize() {
     try {
-      mInterface = loadModule(mCfg.get("modulesDir")+"\\interface"+mCfg.get("interfaceModule"));
+      mInterface = loadModule(mCfg.get("modulesDir")+OS_SLASH+"interface"+mCfg.get("interfaceModule"));
     } catch (ModuleException& e) {
       ERR << e.what();
       throw(e);
@@ -52,12 +52,12 @@ namespace Chimera {
       THROW(ModuleException, GetLastErrorAsString());
     }
     return ctor();
-#else if PLATFORM == MACOS || PLATFORM == UNIX
+#elif PLATFORM == MACOS || PLATFORM == UNIX
     char *error;
     void *mHandle;
     Chimera::ModuleCtor ctor;
 
-    mHandle = dlopen((filename + DYN_EXT).c_str(), RTLD_LAZY);
+    mHandle = dlopen((filename + DLL_EXT).c_str(), RTLD_LAZY);
     if (mHandle == nullptr) {
       THROW(ModuleException, dlerror());
     }
