@@ -25,15 +25,21 @@
 #endif
 
 #include <cstdint>
+#include <functional>
 
 namespace Chimera {
   class Module {
     public:
+      typedef std::function<void(const std::string &key, const std::string &value)> StoreValueFunc;
+      typedef std::function<std::string(const std::string &key)> RequestValueFunc;
       Module() {};
       ~Module() {};
       virtual void init() { };
       virtual void close() { };
       virtual void tick() { };
+      /* These function pointers are assigned by the Client to the corresponding handlers upon module load. */
+      StoreValueFunc storeValue;
+      RequestValueFunc requestValue;
   };
   typedef Module* (*ModuleCtor)();
 }

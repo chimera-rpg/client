@@ -13,6 +13,7 @@ namespace Chimera {
       void loop();
       Cfg mCfg;
       Chimera::Module* loadModule(std::string filename);
+      void bindModule(Chimera::Module *module);
     private:
       Chimera::Module* mInterface{nullptr};
       Chimera::Module* mMacros{nullptr};

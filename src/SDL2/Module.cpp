@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <string>
 #include "common/ModuleException.hpp"
 #include "SDL2/Module.hpp"
 #include "common/Log.hpp"
@@ -10,11 +11,17 @@ namespace Chimera {
     Module::~Module() {
     }
     void Module::init() {
+      int width, height, x, y;
       if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) != 0) {
         THROW(Chimera::ModuleException, SDL_GetError());
       }
 
-      mWindow = SDL_CreateWindow("Chimera SDL2", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
+      width   = std::stoi(requestValue("window_width"));
+      height  = std::stoi(requestValue("window_height"));
+      x       = std::stoi(requestValue("window_x")) || SDL_WINDOWPOS_UNDEFINED;
+      y       = std::stoi(requestValue("window_y")) || SDL_WINDOWPOS_UNDEFINED;
+
+      mWindow = SDL_CreateWindow("Chimera SDL2", x, y, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE);
 
       if (mWindow == NULL) {
         THROW(Chimera::ModuleException, SDL_GetError());

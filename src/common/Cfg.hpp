@@ -11,11 +11,12 @@ namespace Chimera {
       Cfg(std::string name);
   
       void readFromStream(std::ifstream &in);
-	  void readFromFilename(std::string name);
+      void readFromFilename(std::string name);
   
       std::string get(std::string key);
       int getInt(std::string key);
       float getFloat(std::string key);
+      void setString(std::string key, std::string value);
       void set(std::string key, std::string value);
       void set(std::string key, int value);
       void set(std::string key, float value);

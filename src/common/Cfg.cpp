@@ -77,6 +77,9 @@ namespace Chimera {
   void Cfg::set(std::string key, std::string value) {
     mTable[key] = value;
   }
+  void Cfg::setString(std::string key, std::string value) {
+    mTable[key] = value;
+  }
   void Cfg::set(std::string key, int value) {
     mTable[key] = std::to_string(value);
   }

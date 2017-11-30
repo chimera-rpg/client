@@ -15,13 +15,10 @@ int main(int argc, char *argv[]) {
   std::set_terminate(terminateHandler);
   auto client = std::make_unique<Chimera::Client>();
   // set all our defaults
-  client->mCfg.set("interfaceModule", "SDL2");
-  client->mCfg.set("macros", "interfaceSDL2");
-  client->mCfg.set("default_width", 1024);
-  client->mCfg.set("default_height", 768);
-  client->mCfg.set("default_x", -0);
-  client->mCfg.set("default_y", -0);
   client->mCfg.set("modulesDir", "modules");
+  client->mCfg.set("interfaceModule", "SDL2");
+  client->mCfg.set("window_width", 1024);
+  client->mCfg.set("window_height", 768);
   // parse args
   // read user's settings
   client->mCfg.readFromFilename("client.cfg");

@@ -19,11 +19,12 @@ namespace Chimera {
   void Client::initialize() {
     try {
       mInterface = loadModule(mCfg.get("modulesDir")+OS_SLASH+"interface"+mCfg.get("interfaceModule"));
+      bindModule(mInterface);
+      mInterface->init();
     } catch (ModuleException& e) {
       ERR << e.what();
       throw(e);
     }
-    mInterface->init();
   }
   void Client::tick() {
     mInterface->tick();
@@ -69,5 +70,9 @@ namespace Chimera {
     }
     return ctor();
 #endif
+  }
+  void Client::bindModule(Chimera::Module *module) {
+    module->requestValue = std::bind(&Chimera::Cfg::get, &mCfg, std::placeholders::_1);
+    module->storeValue = std::bind(&Chimera::Cfg::setString, &mCfg, std::placeholders::_1, std::placeholders::_2);
   }
 }
