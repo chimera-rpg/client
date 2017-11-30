@@ -22,6 +22,8 @@ project "chimera-client"
     links { "pthread", "dl" }
     buildoptions { "-DLOG_FORMAT" }
   configuration "macosx"
+    files { "src/Dialog/DialogMac.mm" }
+    links { "Cocoa.framework" }
 
   configuration "windows"
     links { "SDL2", "SDL2main", "ws2_32" }
