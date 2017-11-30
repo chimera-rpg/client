@@ -19,10 +19,11 @@ project "chimera-client"
 
   configuration { "linux" }
     buildoptions { "-I/usr/include/SDL2/" }
-    links { "pthread", "dl" }
+    links { "pthread", "dl", "X11" }
+    files { "src/dialog/DialogX11.cpp" }
     buildoptions { "-DLOG_FORMAT" }
   configuration "macosx"
-    files { "src/Dialog/DialogMac.mm" }
+    files { "src/dialog/DialogMac.mm" }
     links { "Cocoa.framework" }
 
   configuration "windows"
