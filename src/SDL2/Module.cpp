@@ -15,7 +15,6 @@ namespace Chimera {
       if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) != 0) {
         THROW(Chimera::ModuleException, SDL_GetError());
       }
-
       width   = std::stoi(requestValue("window_width"));
       height  = std::stoi(requestValue("window_height"));
       x       = std::stoi(requestValue("window_x")) || SDL_WINDOWPOS_UNDEFINED;

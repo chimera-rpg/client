@@ -72,7 +72,7 @@ namespace Chimera {
 #endif
   }
   void Client::bindModule(Chimera::Module *module) {
-    module->requestValue = std::bind(&Chimera::Cfg::get, &mCfg, std::placeholders::_1);
-    module->storeValue = std::bind(&Chimera::Cfg::setString, &mCfg, std::placeholders::_1, std::placeholders::_2);
+    module->requestValue = std::bind(&Chimera::Cfg::getCString, std::ref(mCfg), std::placeholders::_1);
+    module->storeValue = std::bind(&Chimera::Cfg::setCString, &mCfg, std::placeholders::_1, std::placeholders::_2);
   }
 }

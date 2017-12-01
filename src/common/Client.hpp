@@ -1,7 +1,11 @@
 #pragma once
 #include <memory>
 #include "common/Cfg.hpp"
-#include "common/ModuleSupport.hpp"
+
+/* Forward declarations */
+namespace Chimera {
+  class Module;
+}
 
 namespace Chimera {
   class Client {

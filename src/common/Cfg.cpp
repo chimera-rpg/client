@@ -7,12 +7,12 @@ namespace Chimera {
   }
   
   Cfg::Cfg(std::string name) {
-    mName = name;
     readFromFilename(mName);
   }
   
   void Cfg::readFromFilename(std::string name) {
-    std::ifstream in(name);
+    mName = name;
+    std::ifstream in(mName);
     if (in.is_open()) {
       readFromStream(in);
     }
@@ -52,12 +52,19 @@ namespace Chimera {
     }
   }
   
-  std::string Cfg::get(std::string key) {
+  const char* Cfg::getCString(const char *key) {
+    auto it = mTable.find(key);
+    if (it != mTable.end()) {
+      return it->second.c_str();
+    }
+    return mNull;
+  }
+  std::string Cfg::get(const std::string &key) {
     auto it = mTable.find(key);
     if (it != mTable.end()) {
       return it->second;
     }
-    return "";
+    return mNull;
   }
   int Cfg::getInt(std::string key) {
     auto it = mTable.find(key);
@@ -78,6 +85,9 @@ namespace Chimera {
     mTable[key] = value;
   }
   void Cfg::setString(std::string key, std::string value) {
+    mTable[key] = value;
+  }
+  void Cfg::setCString(const char *key, const char *value) {
     mTable[key] = value;
   }
   void Cfg::set(std::string key, int value) {

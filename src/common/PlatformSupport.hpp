@@ -14,7 +14,7 @@
 #define DLL_EXT ".dll"
 #define OS_SLASH "\\"
 #include <windows.h>
-  std::wstring s2mb(const std::string& s) {
+  static std::wstring s2mb(const std::string& s) {
     int slength = (int)s.length() + 1;
     int len = MultiByteToWideChar(CP_ACP, 0, s.c_str(), slength, 0, 0);
     wchar_t *buf = new wchar_t[len];
@@ -23,7 +23,7 @@
     delete[] buf;
     return r;
   }
-  std::wstring s2ws(const std::string& s) {
+  static std::wstring s2ws(const std::string& s) {
     std::wstring stemp;
 #ifdef UNICODE
     stemp = s2mb(s);
@@ -33,7 +33,7 @@
     return stemp;
   }
 
-  std::string GetLastErrorAsString() {
+  static std::string GetLastErrorAsString() {
     DWORD errorMessageID = ::GetLastError();
     if (errorMessageID == 0) {
       return std::string();

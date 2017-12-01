@@ -30,8 +30,8 @@
 namespace Chimera {
   class Module {
     public:
-      typedef std::function<void(const std::string &key, const std::string &value)> StoreValueFunc;
-      typedef std::function<std::string(const std::string &key)> RequestValueFunc;
+      typedef std::function<void(const char *key, const char *value)> StoreValueFunc;
+      typedef std::function<const char *(const char *key)> RequestValueFunc;
       Module() {};
       ~Module() {};
       virtual void init() { };
