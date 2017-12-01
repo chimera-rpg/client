@@ -27,7 +27,8 @@ project "chimera-client"
     links { "Cocoa.framework" }
 
   configuration "windows"
-    links { "SDL2", "SDL2main", "ws2_32" }
+    links { "ws2_32" }
+    files { "src/dialog/DialogWin.cpp" }
 
   filter "configurations:Debug"
     defines { "DEBUG" }
